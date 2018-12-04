@@ -4,58 +4,88 @@ using System.Text;
 
 namespace DataStructures.CommonLibrary.LinkedList
 {
-    public class LinkedList
+    public class LinkedList<T>
     {
-        public LinkedListNode Head { get; set; }
+        public int Size { get; private set; }
+        public LinkedListNode<T> Head { get; private set; }
+        public LinkedListNode<T> Tail { get; set; }
 
         //add to head
-        public void AddToHead(int data)
+        /// <summary>
+        /// Complexity O(1)
+        /// </summary>
+        /// <param name="data"></param>
+        public LinkedList<T> AddToHead(T data)
         {
-            LinkedListNode node = new LinkedListNode(data);
+            LinkedListNode<T> node = new LinkedListNode<T>(data);
 
             // 1 -> 2  -> 3 - NULL
 
             if (Head == null) //this is the first node
             {
-                Head = new LinkedListNode(data);
-                return;
+                Head = node;
+                Tail = node;
+                Size++;
+                return this;
             }
 
             node.Next = Head;
             this.Head = node;
+
+            Size++;
+
+            if (Size == 1)
+                this.Tail = Head;
+
+            return this;
         }
 
         //add to tail
-        public void AddToTail(int data)
+        public LinkedList<T> AddToTail(T data)
         {
             //1 -> 2 -> 3 - NULL
-            LinkedListNode node = new LinkedListNode(data);
+            LinkedListNode<T> node = new LinkedListNode<T>(data);
 
             if (Head == null)
             {
                 Head = node;
+                Tail = node;
+                Size++;
+                return this;
+            }
+
+            Tail.Next = node;
+            Tail = node;
+            Size++;
+
+            return this;
+        }
+        //delete
+        public void RemoveLast()
+        {
+            if (Head == null)
+            {
+                Console.WriteLine("List is empty");
                 return;
             }
 
             var current = Head;
 
-            while (current != null)
+            if (current.Next == null)
             {
-                if (current.Next == null)
+                Head = null;
+                return;
+            }
+
+            while (current != null && current.Next != null)
+            {
+                if (current.Next.Next == null)
                 {
-                    current.Next = new LinkedListNode(data);
-                    break;
+                    current.Next = null;
                 }
 
                 current = current.Next;
             }
         }
-
-        //add to middle
-
-        //search
-
-        //delete
-
     }
 }
