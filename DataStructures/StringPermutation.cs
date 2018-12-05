@@ -31,7 +31,7 @@ namespace DataStructures
                 }
             }
         }
-
+    
         public static void Permute(string str)
         {
             List<char> chosen = new List<char>();

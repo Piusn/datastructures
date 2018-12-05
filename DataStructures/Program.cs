@@ -9,17 +9,21 @@ namespace DataStructures
         {
             //StringPermutation.Permute("abcd");
 
-            LinkedList<string> node = new LinkedList<string>();
+            //LinkedList<string> node = new LinkedList<string>();
             //AA->XYZ->CD->C->ZYX->AA-> null
-            node.AddToHead("AA")
-                .AddToTail("XRYZ")
-                .AddToTail("CD")
-                .AddToTail("C")
-                .AddToTail("ZYX")
-                .AddToTail("AA");
+            // node.AddToHead("AA")
+            //     .AddToTail("XYZ")
+            //     .AddToTail("CD")
+            //     .AddToTail("C")
+            //     .AddToTail("ZYX")
+            //     .AddToTail("AA");
 
-           var isParandrome= LinkedListExercise.IsPalandrome(node.Head);
+            //var isParandrome= LinkedListExercise.IsPalandrome(node.Head);
 
+            BacktrackingCharacterMatrix.FindWord("START");
+            BacktrackingCharacterMatrix.FindWord("NOTE");
+            BacktrackingCharacterMatrix.FindWord("SAND");
+            BacktrackingCharacterMatrix.FindWord("STONED");
             Console.ReadKey();
             Console.WriteLine("Hello World!");
         }
