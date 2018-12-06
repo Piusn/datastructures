@@ -46,7 +46,7 @@ namespace DataStructures
         {
             string temp = string.Empty;
 
-            
+
             return temp;
         }
 
@@ -77,12 +77,52 @@ namespace DataStructures
             else
             {
                 forward = forward + node.Data;
-                IsParandromeHelper(node.Next,ref  forward,ref backward);
+                IsParandromeHelper(node.Next, ref forward, ref backward);
 
                 backward = backward + ReverseString(node.Data);
             }
         }
 
+        #endregion
+
+        #region Detect loop in a linked list
+
+        //1--->2---3
+        //     |   |
+        //     5---4
+
+        /// <summary>
+        /// Floyd’s Cycle-Finding Algorithm
+        /// </summary>
+        /// <param name="node">Node to look at</param>
+        /// <returns>Boolean, true if a loop, else false</returns>
+        public static bool IsLoop(DataStructures.CommonLibrary.LinkedList.LinkedListNode<int> node)
+        {
+            if (node == null)
+                return false;
+
+            if (node.Next == null)
+                return false;
+
+            bool isLoop = false;
+            var first = node;
+            var second = node.Next.Next;
+
+            while (first.Next != null && second.Next?.Next != null)
+            {
+                if (first == second)
+                {
+                    isLoop = true;
+
+                    break;
+                }
+
+                first = first.Next;
+                second = second.Next.Next;
+            }
+
+            return isLoop;
+        }
         #endregion
     }
 }

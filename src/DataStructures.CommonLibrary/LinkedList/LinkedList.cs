@@ -60,6 +60,7 @@ namespace DataStructures.CommonLibrary.LinkedList
 
             return this;
         }
+        
         //delete
         public void RemoveLast()
         {
