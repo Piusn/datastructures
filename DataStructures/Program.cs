@@ -39,11 +39,13 @@ namespace DataStructures
             //fifth.Next = second;
 
             //var isLoop = LinkedListExercise.IsLoop(first);
+
             //----------------------------------------------------------------
-            var input = new int[] { 123,6,44, 4, 5,150, 1,789, 9, 7, 3,6,89 };
 
-           new  QuickSort().Sort(input, 0, input.Length-1);
-
+            //var input = new int[] { 123,6,44, 4, 5,150, 1,789, 9, 7, 3,6,89 };
+            //new  QuickSort().Sort(input, 0, input.Length-1);
+            //----------------------------------------------------------------
+            MatrixExercise.PrintArrayInSpiral();
             Console.ReadKey();
             Console.WriteLine("Hello World!");
         }
