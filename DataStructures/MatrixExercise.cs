@@ -14,23 +14,24 @@ namespace DataStructures
 
         //OUTPUT - 1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
 
-        public static int[,] GetMatrix()
+        private static int[,] GetMatrix()
         {
-            int[,] input = new int[4, 4]
-            {
-                {1 ,     2 ,   3 ,   4 },
-                {5  ,    6 ,   7 ,   8 },
-                {9  ,   10 ,  11 ,  12 },
-                {13 ,   14 ,  15 ,  16 }
-            };
-            //int[,] input = new int[3, 6]
+            //int[,] input = new int[4, 4]
             //{
-            //    {1 ,  2  , 3,   4 , 5,   6 },
-            //    {7 ,  8  , 9 , 10 , 11 , 12 },
-            //    {13,  14 , 15 ,16 , 17 , 18 }
+            //    {1 ,     2 ,   3 ,   4 },
+            //    {5  ,    6 ,   7 ,   8 },
+            //    {9  ,   10 ,  11 ,  12 },
+            //    {13 ,   14 ,  15 ,  16 }
             //};
+            int[,] input = new int[3, 6]
+            {
+                {1 ,  2  , 3,   4 , 5,   6 },
+                {7 ,  8  , 9 , 10 , 11 , 12 },
+                {13,  14 , 15 ,16 , 17 , 18 }
+            };
             return input;
         }
+
         public static void PrintArrayInSpiral()
         {
             //1    2   3   4
@@ -56,7 +57,7 @@ namespace DataStructures
                 //Move right
                 while (index <= rightColumn)
                 {
-                    Console.WriteLine(input[topRow, index]);
+                    Console.Write($"{input[topRow, index]},");
                     index++;
                 }
 
@@ -72,7 +73,7 @@ namespace DataStructures
                 //Move down
                 while (index <= bottomRow)
                 {
-                    Console.WriteLine(input[index, rightColumn]);
+                    Console.Write($"{input[index, rightColumn]},");
                     index++;
                 }
 
@@ -85,7 +86,7 @@ namespace DataStructures
 
                 while (index >= leftColumn)
                 {
-                    Console.WriteLine(input[bottomRow, index]);
+                    Console.Write($"{input[bottomRow, index]},");
                     index--;
                 }
 
@@ -97,7 +98,7 @@ namespace DataStructures
 
                 while (index >= topRow)
                 {
-                    Console.WriteLine(input[index, leftColumn]);
+                    Console.Write($"{input[index, leftColumn]},");
                     index--;
                 }
 
@@ -106,6 +107,49 @@ namespace DataStructures
             }
         }
 
+        public static void PrintArrayInSpiralRecursive()
+        {
+            int[,] input = GetMatrix();
+
+            PrintArrayInSpiralRecursiveHelper(input, 0, 2, 0, 5);
+        }
+
+        public static void PrintArrayInSpiralRecursiveHelper(int[,] matrix, int rowStart, int rowLength, int colStart, int colLength)
+        {
+            if (rowStart <= rowLength)
+            {
+                for (int i = rowStart; i <= colLength; i++)
+                {
+                    Console.Write(matrix[rowStart, i] + " ");
+                }
+            }
+
+            for (int i = rowStart + 1; i <= rowLength; i++)
+            {
+                Console.Write(matrix[i, colLength] + " ");
+            }
+
+            if (rowStart + 1 <= rowLength)
+            {
+                for (int i = colLength - 1; i >= colStart; i--)
+                {
+                    Console.Write(matrix[rowLength, i] + " ");
+                }
+            }
+
+            if (colStart + 1 <= colLength)
+            {
+                for (int i = rowLength - 1; i > rowStart; i--)
+                {
+                    Console.Write(matrix[i, colStart] + " ");
+                }
+            }
+
+            if (rowStart + 1 <= rowLength - 1 && colStart + 1 <= colLength - 1)
+            {
+                PrintArrayInSpiralRecursiveHelper(matrix, rowStart + 1, rowLength - 1, colStart + 1, colLength - 1);
+            }
+        }
 
         #endregion
     }
