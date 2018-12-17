@@ -9,4 +9,8 @@
     <ProjectReference Include="..\src\DataStructures.CommonLibrary\DataStructures.CommonLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Trees\" />
+  </ItemGroup>
+
 </Project>

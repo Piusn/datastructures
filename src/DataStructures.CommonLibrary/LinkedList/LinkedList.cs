@@ -7,8 +7,8 @@ namespace DataStructures.CommonLibrary.LinkedList
     public class LinkedList<T>
     {
         public int Size { get; private set; }
-        public LinkedListNode<T> Head { get; private set; }
-        public LinkedListNode<T> Tail { get; set; }
+        public SinglyLinkedListNode<T> Head { get; private set; }
+        public SinglyLinkedListNode<T> Tail { get; set; }
 
         //add to head
         /// <summary>
@@ -17,7 +17,7 @@ namespace DataStructures.CommonLibrary.LinkedList
         /// <param name="data"></param>
         public LinkedList<T> AddToHead(T data)
         {
-            LinkedListNode<T> node = new LinkedListNode<T>(data);
+            SinglyLinkedListNode<T> node = new SinglyLinkedListNode<T>(data);
 
             // 1 -> 2  -> 3 - NULL
 
@@ -44,7 +44,7 @@ namespace DataStructures.CommonLibrary.LinkedList
         public LinkedList<T> AddToTail(T data)
         {
             //1 -> 2 -> 3 - NULL
-            LinkedListNode<T> node = new LinkedListNode<T>(data);
+            SinglyLinkedListNode<T> node = new SinglyLinkedListNode<T>(data);
 
             if (Head == null)
             {
