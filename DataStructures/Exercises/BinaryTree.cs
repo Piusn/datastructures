@@ -172,18 +172,56 @@ namespace DataStructures.Exercises
                 return 0;
 
             //go left
-            var leftSum = MaximumPathHelper(node.Left,ref result);
+            var leftSum = MaximumPathHelper(node.Left, ref result);
             var rightSum = MaximumPathHelper(node.Right, ref result);
 
             var maxOfRightLeft = Math.Max(leftSum, rightSum);
 
-            var max= Math.Max(node.Data + maxOfRightLeft, node.Data + leftSum + rightSum);
+            var max = Math.Max(node.Data + maxOfRightLeft, node.Data + leftSum + rightSum);
 
             return Math.Max(max, max + result);
         }
 
         #endregion
 
-        
+        #region TreeHeight
+
+        public int LeftHeight(BinaryTreeNode node)
+        {
+            if (node == null)
+                return 0;
+            int height = 0;
+
+            while (node != null)
+            {
+                node = node.Left;
+                height++;
+            }
+
+            return height + 1;
+        }
+
+        public int RightHeight(BinaryTreeNode node)
+        {
+            if (node == null)
+                return 0;
+            int h = 0;
+
+            while (node != null)
+            {
+                node = node.Right;
+                h++;
+            }
+
+            return h;
+        }
+
+        public int DiameterOfTree(BinaryTreeNode node)
+        {
+
+            return 0;
+        }
+        #endregion
+
     }
 }
