@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataStructures.CommonLibrary.LinkedList
 {
-    public class LinkedList<T>
+    public class SinglyLinkedList<T>
     {
         public int Size { get; private set; }
         public SinglyLinkedListNode<T> Head { get; private set; }
@@ -15,7 +15,7 @@ namespace DataStructures.CommonLibrary.LinkedList
         /// Complexity O(1)
         /// </summary>
         /// <param name="data"></param>
-        public LinkedList<T> AddToHead(T data)
+        public SinglyLinkedList<T> AddToHead(T data)
         {
             SinglyLinkedListNode<T> node = new SinglyLinkedListNode<T>(data);
 
@@ -41,7 +41,7 @@ namespace DataStructures.CommonLibrary.LinkedList
         }
 
         //add to tail
-        public LinkedList<T> AddToTail(T data)
+        public SinglyLinkedList<T> AddToTail(T data)
         {
             //1 -> 2 -> 3 - NULL
             SinglyLinkedListNode<T> node = new SinglyLinkedListNode<T>(data);

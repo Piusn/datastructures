@@ -183,7 +183,7 @@ namespace DataStructures.Exercises
         }
 
         #endregion
-
+        
         public static bool AreIdentical(BinaryTreeNode left, BinaryTreeNode right)
         {
             var identical = AreIdenticalHelper(left, right);
@@ -234,5 +234,46 @@ namespace DataStructures.Exercises
                 }
             }
         }
+
+        #region TreeHeight
+
+        public int LeftHeight(BinaryTreeNode node)
+        {
+            if (node == null)
+                return 0;
+            int height = 0;
+
+            while (node != null)
+            {
+                node = node.Left;
+                height++;
+            }
+
+            return height + 1;
+        }
+
+        public int RightHeight(BinaryTreeNode node)
+        {
+            if (node == null)
+                return 0;
+            int h = 0;
+
+            while (node != null)
+            {
+                node = node.Right;
+                h++;
+            }
+
+            return h;
+        }
+
+        public int DiameterOfTree(BinaryTreeNode node)
+        {
+
+            return 0;
+        }
+        #endregion
+
+
     }
 }

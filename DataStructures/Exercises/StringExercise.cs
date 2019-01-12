@@ -1,11 +1,9 @@
-﻿using System;
+﻿using DataStructures.CommonLibrary.Trees;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
-using DataStructures.CommonLibrary.Trees;
 
 namespace DataStructures.Exercises
 {
@@ -18,7 +16,7 @@ namespace DataStructures.Exercises
             //base
             if (!list.Any())
             {
-                Console.WriteLine(String.Join(",", chosen));
+                Console.WriteLine(string.Join(",", chosen));
             }
             else
             {
@@ -69,7 +67,7 @@ namespace DataStructures.Exercises
             }
             else
             {
-                sum = sum + (int)Char.GetNumericValue(str[index]);// Convert.ToInt32(str[index]);
+                sum = sum + (int)char.GetNumericValue(str[index]);// Convert.ToInt32(str[index]);
                 FindEqualSumDigitsHelper(number, ref sum, index + factor, factor);
             }
         }
@@ -133,6 +131,8 @@ namespace DataStructures.Exercises
         //TODO: FindSubstringBruteForce/ KMP / Other string algorithm
         //abcadbdbt
         //dbt
+
+        #region Find substring brute force
         public static int FindSubstringBruteForce(string source, string pattern)
         {
             int patternIndex = 0;
@@ -188,10 +188,63 @@ namespace DataStructures.Exercises
             return source.Length;
         }
 
+        #endregion
+
+        #region Find substring Rabin-karp algorithm
+
+        private static int ComputeHash(char[] character)
+        {
+            int hash = 0;
+
+            for (int i = 0; i < character.Length; i++)
+            {
+                hash += character[i] * 101 ^ i;
+            }
+            return hash;
+        }
+        public static int FindSubstringRabinKarp(string text, string pattern)
+        {
+            int hash = ComputeHash(pattern.ToCharArray());
+
+            int startIndex = 0;
+            int endIndex = 0;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                char[] characters = new char[pattern.Length];
+
+                for (int j = 0; j < pattern.Length; j++)
+                {
+                    characters[j] = text[j + i];
+                }
+
+                var stringHash = ComputeHash(characters);
+
+                if (hash == stringHash)
+                {
+                    startIndex = i;
+                    endIndex = i + pattern.Length - 1;
+                }
+            }
+
+            return startIndex;
+        }
+
+        #endregion
+
+        #region Find substring KMP algorithm
+
+        #endregion
+
+        #region Find substring Boyer - Mooore algorithm
+
+        #endregion
+
+        #region Longest Common Subsequence
         //TODO: https://www.youtube.com/watch?v=NnD96abizww Longest Common Subsequence
         //https://www.youtube.com/watch?v=sSno9rV8Rhg
-
         //TODO: https://www.youtube.com/watch?v=tABtJbLOQho
+
         public static string RemoveWhiteSpaces(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -308,11 +361,12 @@ namespace DataStructures.Exercises
 
                 table[pattern[i]] = index;
             }
+
             //012345678
             //TRUSTHARDTOOTHBRUSHES
             //TOOTH
-            int patternIndex = patternLength-1;
-            int textIndex = patternLength-1;
+            int patternIndex = patternLength - 1;
+            int textIndex    = patternLength - 1;
 
             while (patternIndex >= 0)
             {
@@ -328,11 +382,45 @@ namespace DataStructures.Exercises
                 if (table.ContainsKey(text[textIndex]))
                     skip = table[text[textIndex]];
 
-                textIndex += skip;
-                patternIndex = patternLength-1;
+                textIndex    += skip;
+                patternIndex =  patternLength - 1;
             }
 
-            Console.WriteLine($"The index is {textIndex +1}");
+            Console.WriteLine($"The index is {textIndex + 1}");
+
+
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left">abcdaf</param>
+        /// <param name="right">acbcf</param>
+        /// <returns></returns>
+        public static string LongestCommonSubsequence(string left, string right)
+        {
+            int[,] matrix = new int[left.Length, right.Length];
+            List<char> c = new List<char>();
+            for (int i = 0; i < left.Length; i++)
+            {
+                for (int j = 0; j < right.Length; j++)
+                {
+                    if (left[i] == right[j])
+                    {
+                        matrix[i, j] = 1;
+                        c.Add(left[i]);
+                    }
+                    else
+                    {
+                        matrix[i, j] = matrix[i, j - 1];
+                    }
+                }
+            }
+
+            return new string(c.ToArray());
+            #endregion
 
         }
     }

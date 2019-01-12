@@ -6,6 +6,9 @@ namespace DataStructures.Exercises
 {
     public class DijikstraShortestPath
     {
-        private graph
+        public DijikstraShortestPath()
+        {
+            
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using DataStructures.Algorithms;
+using DataStructures.CommonLibrary.Graph;
 using DataStructures.CommonLibrary.LinkedList;
 using DataStructures.CommonLibrary.Trees;
 using DataStructures.Exercises;
@@ -17,7 +18,6 @@ namespace DataStructures
         {
             for (int i = 0; i < str.Length; i++)
             {
-
                 var t = str[i];
                 count[t]++;
             }
@@ -106,6 +106,95 @@ namespace DataStructures
 
 
             int[] a = new[] { 1, 5, 2, 4, 6 };
+
+            var friends = new int [6, 6];
+
+            friends[0, 0] = 1;
+            friends[0, 1] = 1;
+            friends[0, 2] = 0;
+            friends[0, 3] = 0;
+            friends[0, 4] = 0;
+            friends[0, 5] = 0;
+
+            friends[1, 0] = 1;
+            friends[1, 1] = 1;
+            friends[1, 2] = 0;
+            friends[1, 3] = 0;
+            friends[1, 4] = 0;
+            friends[1, 5] = 0;
+
+            friends[2, 0] = 0;
+            friends[2, 1] = 0;
+            friends[2, 2] = 1;
+            friends[2, 3] = 1;
+            friends[2, 4] = 1;
+            friends[2, 5] = 0;
+
+            friends[3, 0] = 0;
+            friends[3, 1] = 0;
+            friends[3, 2] = 1;
+            friends[3, 3] = 1;
+            friends[3, 4] = 0;
+            friends[3, 5] = 0;
+
+            friends[4, 0] = 0;
+            friends[4, 1] = 0;
+            friends[4, 2] = 1;
+            friends[4, 3] = 0;
+            friends[4, 4] = 1;
+            friends[4, 5] = 0;
+
+            friends[5, 0] = 0;
+            friends[5, 1] = 0;
+            friends[5, 2] = 0;
+            friends[5, 3] = 0;
+            friends[5, 4] = 0;
+            friends[5, 5] = 1;
+            var count= GraphExercise.FindCircleNum(friends);
+            Console.WriteLine(count);
+            //Graph g = new Graph(true);
+            //g.AddVertex(1);
+            //g.AddVertex(2);
+            //g.AddVertex(3);
+            //g.AddVertex(4);
+            //g.AddVertex(5);
+            //g.AddVertex(6);
+            //g.AddVertex(7);
+            //g.AddVertex(8);
+
+            //g.AddEdge(1, 2,2);
+            //g.AddEdge(1, 4,1);
+            //g.AddEdge(2, 3,3);
+            //g.AddEdge(3, 7,2);
+            //g.AddEdge(4, 5,4);
+            //g.AddEdge(5, 8,1);
+            //g.AddEdge(5, 6,5);
+            //g.AddEdge(6, 8,4);
+            //g.AddEdge(6, 7,5);
+            //g.AddEdge(2, 5, 3);
+            //g.AddEdge(3, 6, 1);
+
+            //GraphExercise.PrintNodeDfs(g);
+            //Console.WriteLine("----------------------------------------------------------");
+            //GraphExercise.PrintNodeBfs(g);
+
+            //Console.WriteLine("----------------------------------------------------------");
+
+            //var l = StringExercise.LongestCommonSubsequence("acbcf", "abcdaf");
+            //StringExercise.FindSubstringRabinKarp("adabcrtruk", "rtru");
+
+            //ArrayExercise.FindMaximumSubarray(new[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 });
+
+            //BackgroundWorker worker = new BackgroundWorker();
+            //worker.DoWork += Worker_DoWork;
+
+            //RecursionExercise.TowerOfHanoi(3, "A", "C", "B");
+            //var items = RecursionExercise.GetNumbers(100);
+            //RecursionExercise.TowerOfHanoi(3, "A", "B", "C");
+
+
+            //int[] a = new[] { 1, 5, 2, 4, 6 };
+
             //int x1 = a[0];
             //int x2 = 1;
             //int n = 5;
