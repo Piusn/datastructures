@@ -44,15 +44,68 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-            BackgroundWorker worker=new BackgroundWorker();
+            StringExercise.BooyeMooreHotspool("TRUSTHARDTOOTHBRUSHES","TOOTH");
+            NumberExercise.PrintLargestSumSubArray(new int[]{-4,2,5,-10,5,1} );
+            LruCache cache=new LruCache();
+            cache.Add(1,45);
+            cache.Add(2, 46);
+            cache.Add(3, 47);
+            cache.Add(4, 48);
+            cache.Get(2);
+            cache.Add(5, 49);
+            cache.Add(6, 50);
+
+           
+            BinaryTreeNode binaryTreeNode = new BinaryTreeNode(10);
+            binaryTreeNode.AddNode(15);
+            binaryTreeNode.AddNode(7);
+            binaryTreeNode.AddNode(3);
+            binaryTreeNode.AddNode(25);
+            binaryTreeNode.AddNode(48);
+            binaryTreeNode.AddNode(72);
+            binaryTreeNode.AddNode(81);
+            binaryTreeNode.AddNode(43);
+            binaryTreeNode.AddNode(31);
+            BinaryTree.IterativeInOrderTraversal(binaryTreeNode);
+            BinaryTreeNode binaryTreeNode1 = new BinaryTreeNode(10); ;
+            binaryTreeNode1.AddNode(15);
+            binaryTreeNode1.AddNode(7);
+            binaryTreeNode1.AddNode(3);
+            binaryTreeNode1.AddNode(25);
+            binaryTreeNode1.AddNode(48);
+            binaryTreeNode1.AddNode(72);
+            binaryTreeNode1.AddNode(81);
+            binaryTreeNode1.AddNode(43);
+            binaryTreeNode1.AddNode(31);
+          //  binaryTreeNode1.AddNode(5555);
+
+            BinaryTree.AreIdentical(binaryTreeNode, binaryTreeNode1);
+
+            StringExercise.FindAllParandrome("aabbbaa");
+            NumberExercise.DynamicCoinChange(new[] { 1, 2, 3 }, 4);
+
+            StringExercise
+               .XmlToTree("<xml><data>hello world     </data>    <a><b></b><b><c></c></b></a></xml>");
+
+            var newString = StringExercise.RemoveWhiteSpaces("  this  .");
+
+            var input = new[] {1,2,3,4,5,6,7,8,9};
+            var lowHigh = new int[] {1, 2, 5, 5, 5, 5, 5, 7, 9};
+            ArrayExercise.FindLowHighIndex(lowHigh);
+
+            ArrayExercise.ReverseArray(input,3);
+
+            DynamicProgramming.Run();
+
+            BackgroundWorker worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
 
             RecursionExercise.TowerOfHanoi(3, "A", "C", "B");
-            var items= RecursionExercise.GetNumbers(100);
-            RecursionExercise.TowerOfHanoi(3,"A","B","C");
+            var items = RecursionExercise.GetNumbers(100);
+            RecursionExercise.TowerOfHanoi(3, "A", "B", "C");
 
 
-            int[] a = new[] {1, 5, 2, 4, 6};
+            int[] a = new[] { 1, 5, 2, 4, 6 };
             //int x1 = a[0];
             //int x2 = 1;
             //int n = 5;

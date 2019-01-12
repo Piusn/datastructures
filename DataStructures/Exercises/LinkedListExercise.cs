@@ -252,5 +252,26 @@ namespace DataStructures.Exercises
 
             return head;
         }
+
+        public static void DeleteNodeGivenKey(SinglyLinkedListNode<int> head, int value)
+        {
+            if (head == null)
+                return;
+
+            var current = head;
+
+            while (current.Next != null)
+            {
+                if (current.Next.Data == value)
+                {
+                    current.Next = current.Next.Next;
+                    break;
+                }
+
+                current = current.Next;
+            }
+        }
+
+
     }
 }

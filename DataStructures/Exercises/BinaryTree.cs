@@ -172,18 +172,67 @@ namespace DataStructures.Exercises
                 return 0;
 
             //go left
-            var leftSum = MaximumPathHelper(node.Left,ref result);
+            var leftSum = MaximumPathHelper(node.Left, ref result);
             var rightSum = MaximumPathHelper(node.Right, ref result);
 
             var maxOfRightLeft = Math.Max(leftSum, rightSum);
 
-            var max= Math.Max(node.Data + maxOfRightLeft, node.Data + leftSum + rightSum);
+            var max = Math.Max(node.Data + maxOfRightLeft, node.Data + leftSum + rightSum);
 
             return Math.Max(max, max + result);
         }
 
         #endregion
 
-        
+        public static bool AreIdentical(BinaryTreeNode left, BinaryTreeNode right)
+        {
+            var identical = AreIdenticalHelper(left, right);
+
+            return identical;
+        }
+
+        public static bool AreIdenticalHelper(BinaryTreeNode left, BinaryTreeNode right)
+        {
+            if (left == null && right == null)
+                return true;
+
+            if (left != null && right != null)
+                return left.Data == right.Data && AreIdenticalHelper(left.Left, right.Left) && AreIdenticalHelper(left.Right, right.Right);
+
+            return false;
+        }
+
+        public static void IterativeInOrderTraversal(BinaryTreeNode root)
+        {
+            Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+
+            bool goLeft = false;
+            stack.Push(root);
+            var current = root.Left;
+
+            while (stack.Count > 0 || goLeft)
+            {
+                while (current != null)
+                {
+                    stack.Push(current);
+                    current = current.Left;
+                }
+
+                goLeft = false;
+
+                while (stack.Count > 0 && !goLeft)
+                {
+                    var top = stack.Pop();
+                    Console.WriteLine(top.Data);
+
+                    if (top.Right != null)
+                    {
+                        current = top.Right;
+                        //stack.Push(current);
+                        goLeft = true;
+                    }
+                }
+            }
+        }
     }
 }

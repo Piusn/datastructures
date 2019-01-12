@@ -83,4 +83,30 @@ namespace DataStructures.CommonLibrary.Trees
             return Math.Max(left, right);
         }
     }
+
+    public class NAryTreeNode<T>
+    {
+        public T Data { get; set; }
+        public List<NAryTreeNode<T>> Children { get; set; }
+        public int Count { get; set; }
+
+        public NAryTreeNode<T> Parent { get; set; }
+
+        public NAryTreeNode(T data)
+        {
+            this.Data = data;
+            this.Children = new List<NAryTreeNode<T>>();
+            this.Count = 1;
+        }
+
+        public NAryTreeNode<T> AddChild(T data)
+        {
+            NAryTreeNode<T> node = new NAryTreeNode<T>(data);
+            node.Parent = this;
+            this.Children.Add(node);
+            this.Count += 1;
+
+            return node;
+        }
+    }
 }

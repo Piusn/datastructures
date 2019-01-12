@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
+using DataStructures.CommonLibrary.Trees;
 
 namespace DataStructures.Exercises
 {
@@ -41,7 +45,6 @@ namespace DataStructures.Exercises
 
             PermuteHelper(str.ToList(), chosen);
         }
-
 
         #endregion
 
@@ -125,7 +128,6 @@ namespace DataStructures.Exercises
             }
         }
 
-
         #endregion
 
         //TODO: FindSubstringBruteForce/ KMP / Other string algorithm
@@ -150,7 +152,7 @@ namespace DataStructures.Exercises
 
                     patternIndex++;
                     continue;
-                    
+
                 }
 
                 if (source[i] != pattern[patternIndex] && patternIndex > 0)
@@ -190,5 +192,148 @@ namespace DataStructures.Exercises
         //https://www.youtube.com/watch?v=sSno9rV8Rhg
 
         //TODO: https://www.youtube.com/watch?v=tABtJbLOQho
+        public static string RemoveWhiteSpaces(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return string.Empty;
+
+            int writeIndex = 0,
+                readIndex = 0;
+
+            char[] word = new char[input.Length];
+
+            while (readIndex <= input.Length - 1)
+            {
+                if (!char.IsWhiteSpace(input[readIndex]))
+                {
+                    word[writeIndex] = input[readIndex];
+                    writeIndex++;
+                }
+                readIndex++;
+            }
+
+            return new string(word);
+        }
+
+        public static void XmlToTree(string xmlString)
+        {
+            Stack<NAryTreeNode<string>> myStack = new Stack<NAryTreeNode<string>>();
+
+            var reader = XmlReader.Create(new StringReader(xmlString));
+
+            NAryTreeNode<string> currentNode = null;
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    Console.WriteLine(reader.Value);
+                }
+
+
+
+                if (reader.IsStartElement() || reader.NodeType == XmlNodeType.Text)
+                {
+                    if (currentNode == null)
+                    {
+                        currentNode = new NAryTreeNode<string>(reader.LocalName);
+                        myStack.Push(currentNode);
+                    }
+                    else if (reader.NodeType == XmlNodeType.Text)
+                        currentNode = currentNode.AddChild(reader.Value);
+                    else
+                    {
+                        currentNode = currentNode.AddChild(reader.LocalName);
+                        myStack.Push(currentNode);
+                    }
+                }
+
+                if (reader.NodeType == XmlNodeType.EndElement)
+                {
+                    currentNode = currentNode?.Parent;
+                    myStack.Pop();
+                }
+            }
+        }
+
+        public static void FindAllParandrome(string input)
+        {
+            int count = 0;
+
+            List<string> outputs = new List<string>();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                int step = 1;
+
+                if (i == 0)
+                    continue;
+
+                if (input[i - step] == input[i])
+                {
+                    outputs.Add(input.Substring(i - step, step + 1));
+                }
+
+                int left = i - step;
+                int right = i + step;
+
+                while (right < input.Length && input[left] == input[right] && left >= 0)
+                {
+                    outputs.Add(input.Substring(left, right - left + 1));
+                    step += 1;
+
+                    left = i - step;
+                    right = i + step;
+                }
+
+                //if (input[left + 1] == input[right - 1] && left + 1 != i)
+                //{
+                //    outputs.Add(input.Substring(left + 1, right - 1 - left));
+                //}
+
+            }
+        }
+
+        public static void BooyeMooreHotspool(string text, string pattern)
+        {
+            Dictionary<char, int> table = new Dictionary<char, int>();
+
+            int patternLength = pattern.Length;
+
+            for (int i = 0; i < patternLength; i++)
+            {
+                var index = patternLength - i - 1;
+                if (index <= 0)
+                    index = patternLength;
+
+                table[pattern[i]] = index;
+            }
+            //012345678
+            //TRUSTHARDTOOTHBRUSHES
+            //TOOTH
+            int patternIndex = patternLength-1;
+            int textIndex = patternLength-1;
+
+            while (patternIndex >= 0)
+            {
+                if (pattern[patternIndex] == text[textIndex])
+                {
+                    textIndex--;
+                    patternIndex--;
+                    continue;
+                }
+
+                var skip = patternLength;
+
+                if (table.ContainsKey(text[textIndex]))
+                    skip = table[text[textIndex]];
+
+                textIndex += skip;
+                patternIndex = patternLength-1;
+            }
+
+            Console.WriteLine($"The index is {textIndex +1}");
+
+        }
     }
 }

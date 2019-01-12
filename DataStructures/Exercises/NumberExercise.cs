@@ -41,6 +41,35 @@ namespace DataStructures.Exercises
             return counter;
         }
 
+        public static int DynamicCoinChange(int[] coins, int value)
+        {
+            var matrix = new int[coins.Length + 1, value + 1];
+
+            for (int i = 0; i < coins.Length; i++)
+            {
+                matrix[i, 0] = 1;
+            }
+
+            for (int i = 1; i <= coins.Length; i++) //row
+            {
+                for (int j = 1; j <= value; j++) //col
+                {
+                    if (j < coins[i - 1])
+                    {
+                        matrix[i, j] = matrix[i - 1, j];
+                    }
+                    else
+                    {
+                        matrix[i, j] = matrix[i - 1, j] + matrix[i, j - coins[i - 1]];
+                    }
+                }
+            }
+
+
+            var l = matrix[coins.Length, value];
+
+            return l;
+        }
         //TODO: Romans to numbers
 
         public static int ConvertRomanToInteger(string s)
@@ -184,5 +213,24 @@ namespace DataStructures.Exercises
         }
 
         //TODO: Knapsack
+        public static void PrintLargestSumSubArray(int[] arr)
+        {
+            int max_so_far = 0;
+            int max_to_here = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                max_to_here += arr[i];
+
+                if (max_to_here > max_so_far)
+                    max_so_far = max_to_here;
+
+                if (max_to_here < 0)
+                    max_to_here = 0;
+            }
+
+            Console.WriteLine(max_so_far);
+        }
+
     }
 }
