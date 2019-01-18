@@ -44,6 +44,31 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            BinaryTreeNode binaryTreeNode = new BinaryTreeNode(10);
+            binaryTreeNode.AddNode(54);
+            binaryTreeNode.AddNode(26);
+            binaryTreeNode.AddNode(93);
+            binaryTreeNode.AddNode(17);
+            binaryTreeNode.AddNode(77);
+            binaryTreeNode.AddNode(31);
+            binaryTreeNode.AddNode(44);
+            binaryTreeNode.AddNode(55);
+            binaryTreeNode.AddNode(20);
+            binaryTreeNode.AddNode(14);
+            ConvertBinaryToDoublyLinkedList.Convert(binaryTreeNode);
+            var quickSortInput = new int[] {54,26,93,17,77,31,44,55,20 };
+            QuickSortAlgorithm.Sort(quickSortInput);
+
+            var insertionSortInput = new int[] { 54, 26, 93, 17, 77, 31, 44, 55, 20 };
+            InsertionSort.Sort(insertionSortInput);
+            var fib = Fibonnaci.Fib(2);
+
+            NQueensProblem nQueensProblem=new NQueensProblem();
+            nQueensProblem.Run();
+
+            DijikstraShortestPath dijikstraShortest=new DijikstraShortestPath();
+            dijikstraShortest.Run();
+
             StringExercise.BooyeMooreHotspool("TRUSTHARDTOOTHBRUSHES","TOOTH");
             NumberExercise.PrintLargestSumSubArray(new int[]{-4,2,5,-10,5,1} );
             LruCache cache=new LruCache();
@@ -56,16 +81,7 @@ namespace DataStructures
             cache.Add(6, 50);
 
            
-            BinaryTreeNode binaryTreeNode = new BinaryTreeNode(10);
-            binaryTreeNode.AddNode(15);
-            binaryTreeNode.AddNode(7);
-            binaryTreeNode.AddNode(3);
-            binaryTreeNode.AddNode(25);
-            binaryTreeNode.AddNode(48);
-            binaryTreeNode.AddNode(72);
-            binaryTreeNode.AddNode(81);
-            binaryTreeNode.AddNode(43);
-            binaryTreeNode.AddNode(31);
+           
             BinaryTree.IterativeInOrderTraversal(binaryTreeNode);
             BinaryTreeNode binaryTreeNode1 = new BinaryTreeNode(10); ;
             binaryTreeNode1.AddNode(15);

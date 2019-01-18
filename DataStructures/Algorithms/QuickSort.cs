@@ -44,7 +44,7 @@ namespace DataStructures.Algorithms
                     j--;
                 }
 
-                if (i < j)
+                if (input[i] > input[j])
                 {
                     Console.WriteLine($"Swaping i={input[i]}      j={input[j]} for {string.Join(',', input)}");
 

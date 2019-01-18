@@ -99,10 +99,7 @@ namespace DataStructures.Exercises
         /// <returns>Boolean, true if a loop, else false</returns>
         public static bool IsLoop(DataStructures.CommonLibrary.LinkedList.SinglyLinkedListNode<int> node)
         {
-            if (node == null)
-                return false;
-
-            if (node.Next == null)
+            if (node?.Next == null)
                 return false;
 
             bool isLoop = false;
@@ -114,7 +111,6 @@ namespace DataStructures.Exercises
                 if (first == second)
                 {
                     isLoop = true;
-
                     break;
                 }
 

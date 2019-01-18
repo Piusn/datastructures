@@ -24,10 +24,10 @@ namespace DataStructures.Exercises
                     visited.Add(v);
                     Console.WriteLine(v.Id);
 
-                    v.AdjacentVertices.ForEach(x =>
-                                               {
-                                                   stack.Push(x);
-                                               });
+                    foreach (var vAdjacentNode in v.AdjacentNodes)
+                    {
+                        stack.Push(vAdjacentNode.Key);
+                    }
                 }
             }
         }
@@ -51,10 +51,10 @@ namespace DataStructures.Exercises
                     visited.Add(v);
                     Console.WriteLine(v.Id);
 
-                    v.AdjacentVertices.ForEach(x =>
-                                               {
-                                                   queue.Enqueue(x);
-                                               });
+                    foreach (var vAdjacentNode in v.AdjacentNodes)
+                    {
+                        queue.Enqueue(vAdjacentNode.Key);
+                    }
                 }
             }
         }
