@@ -57,7 +57,7 @@ namespace DataStructures.Exercises
             return index;
         }
 
-        #endregion
+        #endregion Construct a Cartesian Tree from In-order Traversal
 
         #region Inorder
 
@@ -72,7 +72,7 @@ namespace DataStructures.Exercises
                 InOrderTraversal(node.Right);
         }
 
-        #endregion
+        #endregion Inorder
 
         #region Least common Ancestor
 
@@ -101,14 +101,13 @@ namespace DataStructures.Exercises
             return previousLeastCommonAncestor;
         }
 
-        #endregion
+        #endregion Least common Ancestor
 
         #region Print in zigzag
 
         public static void ZigzagLevelOrder(BinaryTreeNode root)
         {
             IList<IList<int>> data = new List<IList<int>>();
-
 
             List<BinaryTreeNode> children = new List<BinaryTreeNode>() { root };
             ZigzagLevelOrderHelper(children, true, ref data);
@@ -151,9 +150,7 @@ namespace DataStructures.Exercises
             }
         }
 
-
-
-        #endregion
+        #endregion Print in zigzag
 
         #region Binary Tree Maximum Path Sum
 
@@ -182,8 +179,8 @@ namespace DataStructures.Exercises
             return Math.Max(max, max + result);
         }
 
-        #endregion
-        
+        #endregion Binary Tree Maximum Path Sum
+
         public static bool AreIdentical(BinaryTreeNode left, BinaryTreeNode right)
         {
             var identical = AreIdenticalHelper(left, right);
@@ -202,9 +199,11 @@ namespace DataStructures.Exercises
             return false;
         }
 
-        public static void IterativeInOrderTraversal(BinaryTreeNode root)
+        public static int[] IterativeInOrderTraversal(BinaryTreeNode root)
         {
             Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+            int[] result = new int[20];
+            int index = 0;
 
             bool goLeft = false;
             stack.Push(root);
@@ -223,7 +222,8 @@ namespace DataStructures.Exercises
                 while (stack.Count > 0 && !goLeft)
                 {
                     var top = stack.Pop();
-                    Console.WriteLine(top.Data);
+                    result[index] = top.Data;
+                    index++;
 
                     if (top.Right != null)
                     {
@@ -233,6 +233,8 @@ namespace DataStructures.Exercises
                     }
                 }
             }
+
+            return result;
         }
 
         #region TreeHeight
@@ -269,11 +271,26 @@ namespace DataStructures.Exercises
 
         public int DiameterOfTree(BinaryTreeNode node)
         {
-
             return 0;
         }
-        #endregion
 
+        #endregion TreeHeight
 
+        public static bool ValidateBst(BinaryTreeNode root)
+        {
+            return ValidateBst(root, Int32.MinValue, int.MaxValue);
+        }
+
+        private static bool ValidateBst(BinaryTreeNode node, int min, int max)
+        {
+            if (node == null)
+                return true;
+
+            if (node.Data < min || node.Data >= max)
+                return false;
+
+            return ValidateBst(node.Left, min, node.Data) && 
+                   ValidateBst(node.Right, node.Data, max);
+        }
     }
 }

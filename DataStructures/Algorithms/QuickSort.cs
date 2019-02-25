@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataStructures.Algorithms
+﻿namespace DataStructures.Algorithms
 {
     public class QuickSort
     {
         //6,4,5,1,9,7,3
-        public void Sort(int[] arr, int low, int high)
+        public static void Sort(int[] arr, int low, int high)
         {
             if (low < high)
             {
-                var pivot = SortHelper(arr, low, high);
+                var pivot = Partition(arr, low, high);
 
                 //Ensure you dont include pivot  - Had rough time here.
                 //Its already in its sorted position you will get stackoverflow exception
@@ -24,7 +20,7 @@ namespace DataStructures.Algorithms
         //123,6,44, 4, 5,89, 1,789, 9, 7, 3,6,150
         //                   j  i
         //0                                     12
-        private int SortHelper(int[] input, int low, int high)
+        private static int Partition(int[] input, int low, int high)
         {
             int pivot = input[low];
 
@@ -34,20 +30,18 @@ namespace DataStructures.Algorithms
             //if high is greater than low
             while (i < j)
             {
-                while (input[i] <= pivot && i < j)
+                while (input[i] <= pivot && i <= j)
                 {
                     i++;
                 }
 
-                while (input[j] > pivot)
+                while (input[j] > pivot && i <= j)
                 {
                     j--;
                 }
 
-                if (input[i] > input[j])
+                if (input[i] > input[j] && i <= j)
                 {
-                    Console.WriteLine($"Swaping i={input[i]}      j={input[j]} for {string.Join(',', input)}");
-
                     var temp = input[i];
                     input[i] = input[j];
                     input[j] = temp;

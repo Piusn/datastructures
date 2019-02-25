@@ -11,6 +11,7 @@
         /// </summary>
         public T Data { get; set; }
 
+        public SinglyLinkedListNode<T> Arbitrary { get; set; }
         /// <summary>
         /// Next node 
         /// </summary>
@@ -20,24 +21,11 @@
         {
             this.Data = data;
         }
-    }
 
-    public class DoublyLinkedListNode<T>
-    {
-        /// <summary>
-        /// Data property
-        /// </summary>
-        public T Data { get; set; }
-
-        /// <summary>
-        /// Next node 
-        /// </summary>
-        public DoublyLinkedListNode<T> Next { get; set; }
-        public DoublyLinkedListNode<T> Previous { get; set; }
-
-        public DoublyLinkedListNode(T data)
+        public SinglyLinkedListNode(T data, SinglyLinkedListNode<T> arbitrary)
         {
             this.Data = data;
+            this.Arbitrary = arbitrary;
         }
     }
 }

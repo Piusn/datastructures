@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DataStructures.CommonLibrary.Trees
 {
@@ -65,10 +64,8 @@ namespace DataStructures.CommonLibrary.Trees
             if (node == null)
                 return 0;
 
-
             int left = 1 + Height(node.Left);
             int right = 1 + Height(node.Right);
-
 
             return Math.Max(left, right);
         }

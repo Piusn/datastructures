@@ -4,7 +4,8 @@ using System.Text;
 
 namespace DataStructures.CommonLibrary.Hash
 {
-    public class Hash
+    public class MyHashTable
     {
+        public int  LoadFactor { get; set; }
     }
 }
