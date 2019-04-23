@@ -2,7 +2,7 @@
 
 namespace DataStructures.Exercises
 {
-    public static class LongestCommonSubsequence
+    public static class AlgoExpertLongestCommonSubsequence
     {
         public static int FindLCS(string str1, string str2)
         {

@@ -41,6 +41,42 @@ namespace DataStructures
 
         private static void Main(string[] args)
         {
+            new AlgoExpertNumberOfBinaryTreeTopologies();
+            new AlgoExpertFindThreeLargestNumbers();
+            new AlgoExpertLongestParandromicSubstring();
+            new AlgoExpertLongestSubstringWithoutDuplication();
+            AlgoExpertMaxSumIncreasingSubsequence algoExpertMaxSumIncreasingSubsequence=new AlgoExpertMaxSumIncreasingSubsequence();
+            AlgoExpertPermutations aep=new AlgoExpertPermutations();
+
+            AlgoExpertMergeSort algoExpertMergeSort=new AlgoExpertMergeSort();
+            AlgoExpertMinNumberOfCoinsForChange algoExpertMinNumberOfCoinsForChange=new AlgoExpertMinNumberOfCoinsForChange();
+            AlgoExpertPalandromeCheck.IsParandrome("abcdcba");
+
+            AlgoExpertBinarySearch binarySearch=new AlgoExpertBinarySearch();
+
+            AlgoExpertBSTTraversal traversal=new AlgoExpertBSTTraversal();
+
+            AlgoExpertDiskStack diskStack = new AlgoExpertDiskStack();
+
+            AlgoExpertKadaneAlgorithm kadane=new AlgoExpertKadaneAlgorithm();
+            AlgoExpertMinMax amm=new AlgoExpertMinMax();
+
+            AlgoExpertRemoveKthNodeLinkedList removeKthNodeLinkedList=new AlgoExpertRemoveKthNodeLinkedList();
+            AlgoExpertFindLoopLinkedList findLoop=new AlgoExpertFindLoopLinkedList();
+            var root = new AlgoExpertInvertBinaryTreeNode(10);
+            root.Add(16);
+            root.Add(8);
+            root.Add(7);
+            root.Add(9);
+            root.Add(17);
+            root.Add(14);
+            root.Add(15);
+            root.Add(13);
+
+            AlgoExpertIterativeInOrderTraversal.Print(root);
+            AlgoExpertHeapSort.Sort(new []{ 8, 5, 2, 9, 5, 6, 3 });
+            AlgoExpertContinousMeanHandler continousMeanHandler = new AlgoExpertContinousMeanHandler();
+            AlgoExpertInvertBinaryTree aib=new AlgoExpertInvertBinaryTree();
             AlgoExpertSubArraySort.Sort(new []{ 1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19 });
             AlgoExpertInsertSort.Sort(new[] { 8, 5, 2, 9, 5, -1, 45, 6, 3 });
             AlgoExpertSelectionSort.Sort(new [] { 8, 5, 2, 9, 5, -1,45, 6, 3 });
@@ -78,20 +114,12 @@ namespace DataStructures
 
             var strFound = ast.Contains("bbc");
 
-            var root = new BinaryTreeNode(10);
-            root.AddNode(5);
-            root.AddNode(15);
-            //root.AddNode(2);
-            //root.AddNode(5);
-            //root.AddNode(13);
-            //root.AddNode(22);
-            //root.AddNode(1);
-            //root.AddNode(14);
+       
 
-            var isvalid = BinaryTree.ValidateBst(root);
-            var result = BinaryTree.IterativeInOrderTraversal(root);
+            //var isvalid = AlgoExpertValidateBst.ValidateBst(root);
+            //var result = BinaryTree.IterativeInOrderTraversal(root);
 
-            var closestValue = FindCloseValueInBst.FindClosest(root, 3);
+            //var closestValue = FindCloseValueInBst.FindClosest(root, 3);
 
             Console.WriteLine(root);
         }

@@ -6,11 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\DataStructures.CommonLibrary\DataStructures.CommonLibrary.csproj" />
+    <Compile Remove="Trees\**" />
+    <EmbeddedResource Remove="Trees\**" />
+    <None Remove="Trees\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Trees\" />
+    <ProjectReference Include="..\src\DataStructures.CommonLibrary\DataStructures.CommonLibrary.csproj" />
   </ItemGroup>
 
 </Project>
