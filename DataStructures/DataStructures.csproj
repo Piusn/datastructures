@@ -6,13 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Trees\**" />
-    <EmbeddedResource Remove="Trees\**" />
-    <None Remove="Trees\**" />
+    <ProjectReference Include="..\src\DataStructures.CommonLibrary\DataStructures.CommonLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\DataStructures.CommonLibrary\DataStructures.CommonLibrary.csproj" />
+    <Folder Include="Array\" />
+    <Folder Include="LinkedList\" />
+    <Folder Include="Matrix\" />
+    <Folder Include="Graphs\" />
+    <Folder Include="Hashtable\" />
+    <Folder Include="Numbers\" />
+    <Folder Include="Trees\" />
   </ItemGroup>
 
 </Project>

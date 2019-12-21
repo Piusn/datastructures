@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructures.CommonLibrary", "src\DataStructures.CommonLibrary\DataStructures.CommonLibrary.csproj", "{31C6D62F-AC19-4E6E-AB06-5BE12DD0C71F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{61450224-2DB4-493A-94EF-C9BB2FFE7470}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructures", "DataStructures\DataStructures.csproj", "{61450224-2DB4-493A-94EF-C9BB2FFE7470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trees", "Trees\Trees.csproj", "{8AED52ED-6A0B-48A6-8043-F42DF0B328EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{61450224-2DB4-493A-94EF-C9BB2FFE7470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61450224-2DB4-493A-94EF-C9BB2FFE7470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61450224-2DB4-493A-94EF-C9BB2FFE7470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AED52ED-6A0B-48A6-8043-F42DF0B328EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AED52ED-6A0B-48A6-8043-F42DF0B328EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AED52ED-6A0B-48A6-8043-F42DF0B328EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AED52ED-6A0B-48A6-8043-F42DF0B328EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

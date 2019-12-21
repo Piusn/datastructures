@@ -5,7 +5,7 @@ using DataStructures.CommonLibrary.Trees;
 
 namespace DataStructures.Algorithms
 {
-    public class BFS
+    public class BreadthFirstSearch
     {
         public static void Bfs(BinaryTreeNode root)
         {
